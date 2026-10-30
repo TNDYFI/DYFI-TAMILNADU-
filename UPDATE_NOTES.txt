@@ -1,0 +1,23 @@
+DYFI TAMILNADU WEBSITE — MOBILE UI/UX + CHATBOT UPDATE
+
+Modified:
+- index.html, team.html, about.html, contact.html, careers.html
+- terms/faq.html, terms/privacy.html, terms/tac.html
+- assets/css/dyfi.css
+
+New:
+- chatbot.html
+
+Key changes:
+- Removed the floating Dialogflow widget from the existing content pages.
+- Added the "Chatbot Query" sidebar item to all pages that have the shared sidebar.
+- Added a dedicated chatbot page that reuses the existing Dialogflow agent ID, title, language code and chat icon; it requests automatic expansion.
+- Added mobile layout corrections and dedicated responsive chatbot styling.
+
+Important integration notes:
+- The existing Dialogflow agent ID is retained. Dialogflow still requires network access and the agent's configured integrations/permissions to be active.
+- The website source cannot intercept Android's native system Back key by itself. The Android WebView Activity should send Back to WebView history first (webView.canGoBack()/webView.goBack()) so the chatbot page closes and the previous page is restored. No Android project source was included in the supplied ZIP, so native Java/Kotlin code was not modified or tested.
+- External links may still be handled by the Android host according to its WebViewClient policy. Internal website links remain same-view links.
+- Validate the Dialogflow expand behaviour on the target Android WebView version and the deployed HTTPS site; a static source check cannot confirm a live agent response.
+
+Place chatbot.html in the project root beside index.html. Keep the assets folder structure unchanged.

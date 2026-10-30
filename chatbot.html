@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ta">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#d50000">
+<meta name="description" content="DYFI Tamil Nadu Chatbot Assistant">
+<title>DYFI Chatbot Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500;700;800&family=Noto+Sans+Tamil:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="./assets/css/dyfi.css">
+</head>
+<body class="chat-page">
+<main class="chat-shell" id="chatShell">
+  <header class="chat-head">
+    <div class="chat-head-title">
+      <span class="chat-mark"><i class="fa-solid fa-comments" aria-hidden="true"></i></span>
+      <div><h1>DYFI Chatbot Assistant</h1><p>DYFI தமிழ்நாடு · உதவிக்கு எங்களிடம் கேளுங்கள்</p></div>
+    </div>
+    <button class="chat-close" id="chatClose" type="button" aria-label="Close chatbot" title="Close">×</button>
+  </header>
+  <div class="chat-welcome" role="status"><strong>வணக்கம்!</strong> DYFI தமிழ்நாடு தொடர்பான உங்கள் கேள்விகளை இங்கே கேட்கலாம்.</div>
+  <section class="chat-live" aria-label="Dialogflow chatbot">
+    <df-messenger intent="" chat-title="DYFI - தமிழ் மாநிலக் குழு" agent-id="0ede04bf-57f2-49da-96bf-6050a3bbcbee" language-code="en" chat-icon="./assets/images/white.png" expand></df-messenger>
+  </section>
+  <footer class="chat-footer">DYFI Tamil Nadu State Committee</footer>
+</main>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<script>
+(function(){
+  "use strict";
+  var close=document.getElementById("chatClose");
+  function closeChat(){
+    if(history.length>1){history.back();}
+    else{location.replace("./index.html");}
+  }
+  close.addEventListener("click",closeChat);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeChat();});
+  // Preserve same-WebView navigation: this page never opens an external window.
+  window.open=function(url){try{var u=new URL(url,location.href);if(u.origin===location.origin||u.protocol==="file:"){location.href=u.href;}}catch(e){}return null;};
+})();
+</script>
+</body>
+</html>
