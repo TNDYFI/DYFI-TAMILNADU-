@@ -1,0 +1,13 @@
+DYFI TAMILNADU - WEBAPP UPGRADE (on top of the mobile + chatbot version)
+
+New files: manifest.webmanifest, sw.js, offline.html, 404.html, robots.txt, sitemap.xml,
+           assets/css/app.css, assets/js/app.js, assets/images/icon-192/512/maskable-512.png, apple-touch-icon.png
+Changed:   all HTML pages (head metadata, theme init, app.css/app.js includes); index.html hero image priority
+
+Added: installable PWA with offline fallback; day/night mode (follows device, remembered); reading progress bar;
+forms validate and submit in-page (no redirect to another site); district search + sort; SEO tags,
+social-share tags, Organization data and sitemap using only details already on the site.
+
+Deploy notes: serve over HTTPS from the site root (service worker + canonical URLs assume https://dyfitamilnadu.org/).
+After changing cached files, bump const V in sw.js. chatbot.html is unchanged. Live Dialogflow, Web3Forms and
+Android WebView behaviour were not tested here.

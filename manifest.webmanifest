@@ -1,0 +1,3 @@
+{"name":"DYFI தமிழ்நாடு","short_name":"DYFI TN","description":"இந்திய ஜனநாயக வாலிபர் சங்கம், தமிழ் மாநிலக் குழு","lang":"ta","dir":"ltr","start_url":"./index.html","scope":"./","display":"standalone","orientation":"portrait","background_color":"#FFFFFF","theme_color":"#D50000",
+"icons":[{"src":"assets/images/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"assets/images/icon-512.png","sizes":"512x512","type":"image/png"},{"src":"assets/images/icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}],
+"shortcuts":[{"name":"இணைந்திட","url":"./careers.html"},{"name":"Chatbot Query","url":"./chatbot.html"},{"name":"தொடர்புகொள்ள","url":"./contact.html"}]}
