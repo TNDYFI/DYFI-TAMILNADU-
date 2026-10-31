@@ -1,0 +1,45 @@
+/* DYFI Tamil Nadu — app layer: dark mode, progress, forms, district finder, install/offline UI */
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#pgbar{position:fixed;top:0;left:0;width:100%;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;z-index:1100;pointer-events:none}
+.side :focus-visible,.ft :focus-visible,.phead :focus-visible,.hero :focus-visible,.cta :focus-visible{outline-color:#fff}
+.side li a[role=button]{cursor:pointer}
+/* forms */
+.is-invalid{border-color:var(--red)!important}
+.ferr{display:block;color:var(--deep);font-size:.85rem;font-weight:600;margin-top:6px}
+.fstatus{margin:0 0 16px;padding:0;font-weight:600;border-radius:8px}
+.fstatus.ok,.fstatus.bad{padding:14px 16px}
+.fstatus.ok{background:#e8f6ec;color:#14532d;border-left:6px solid #16a34a}
+.fstatus.bad{background:#fdecec;color:#7f1d1d;border-left:6px solid var(--red)}
+.btn-send[disabled]{opacity:.7;cursor:progress;transform:none}
+.spin{display:inline-block;width:1em;height:1em;border:2px solid #fff;border-right-color:transparent;border-radius:50%;margin-right:8px;vertical-align:-2px;animation:spin .7s linear infinite}
+/* district finder */
+.dfind{display:flex;flex-wrap:wrap;gap:10px;padding:12px 14px;border-bottom:1px solid #e8e8e8}
+.dfind input{flex:1 1 180px;min-width:0;border:2px solid #ddd;padding:10px 12px;font:inherit;min-height:44px;background:#fff;color:inherit}
+.dfind input:focus{border-color:var(--red);outline:0;box-shadow:0 0 0 .2rem rgba(213,0,0,.15)}
+.dfind button{min-height:44px;padding:0 14px;border:2px solid var(--ink);background:transparent;color:inherit;font:600 .85rem var(--ff);cursor:pointer}
+.dfind button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.dnone{padding:18px;color:var(--mut);margin:0}
+/* toast */
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:50px;border:2px solid var(--red);z-index:2000;opacity:0;visibility:hidden;transition:.3s;max-width:calc(100% - 32px);text-align:center;font-weight:600}
+.toast.on{opacity:1;visibility:visible;transform:translate(-50%,0)}
+/* dark theme */
+[data-theme=dark]{color-scheme:dark}
+[data-theme=dark] body{background:#121212;color:#eaeaea}
+[data-theme=dark] .bg-fx{background:linear-gradient(rgba(213,0,0,.09) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(213,0,0,.09) 1px,transparent 1px) 0 0/48px 48px,#121212}
+[data-theme=dark] .bg-fx .blob{opacity:.1}
+[data-theme=dark] .sec.tint{background:#181818}
+[data-theme=dark] :is(.dm,.wg,.dist,.ic,.form-box,.leader,.note){background:#1d1d1d;border-color:#2e2e2e;color:#eaeaea}
+[data-theme=dark] .leader{background:transparent;border-color:#2e2e2e}
+[data-theme=dark] .dist-row{background:#262626}
+[data-theme=dark] :is(.about-g p,.doc p,.doc li,details p){color:#d6d6d6}
+[data-theme=dark] :is(.dm p,.ic p,.sec-t p,.dnone){color:#aaa}
+[data-theme=dark] :is(.ic a,.doc a,.note a,.dist a,.ferr){color:#ff7a7a}
+[data-theme=dark] :is(.form-control,.form-select,.dfind input){background:#161616;border-color:#3a3a3a;color:#eee}
+[data-theme=dark] .dfind{border-color:#2e2e2e}.dfind button{border-color:#555}
+[data-theme=dark] details{border-color:#2e2e2e}
+[data-theme=dark] .dm:hover{background:#000}
+[data-theme=dark] #preloader{background:#121212}
+[data-theme=dark] :focus-visible{outline-color:#fff}
+[data-theme=dark] .map-f{filter:grayscale(.3) invert(.9) hue-rotate(180deg)}
+[data-theme=dark] .fstatus.ok{background:#12301c;color:#b7f0c8}[data-theme=dark] .fstatus.bad{background:#341414;color:#ffc9c9}
+.dist-row[hidden],.dnone[hidden]{display:none}
