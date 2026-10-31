@@ -11,3 +11,8 @@ social-share tags, Organization data and sitemap using only details already on t
 Deploy notes: serve over HTTPS from the site root (service worker + canonical URLs assume https://dyfitamilnadu.org/).
 After changing cached files, bump const V in sw.js. chatbot.html is unchanged. Live Dialogflow, Web3Forms and
 Android WebView behaviour were not tested here.
+
+PART 1 - அமைப்பு சட்டம் (Constitution) digital book
+Replaced: terms/privacy.html removed; every Privacy policy link now points to constitution.html (அமைப்பு சட்டம்); sidebar entry added.
+New: constitution.html, assets/css/constitution.css, assets/js/constitution.js, assets/constitution/p01-p33.webp, assets/docs/DYFI-Constitution.pdf
+The book shows the 33 scanned pages of the official PDF unchanged (no retyping). Search is not included: the scan has no text layer.
