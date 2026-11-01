@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="./assets/css/app.css">
 <link rel="stylesheet" href="./assets/css/constitution.css">
 <script>document.documentElement.className+=" js";try{var t=localStorage.getItem("dyfi-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="./assets/css/skeu.css">
 </head>
 <body id="constitution" data-page="constitution" class="">
 <div id="preloader" role="status" aria-label="Loading"><i class="fa-solid fa-star" aria-hidden="true"></i><b>DYFI தமிழ் மாநிலக் குழு</b><span>அனைவருக்கும் | கல்வி | அனைவருக்கும் | வேலை</span></div>
@@ -41,7 +42,7 @@
 <div class="cb-actions"><a class="cb-btn" href="./assets/docs/DYFI-Constitution.pdf" download="DYFI-Constitution.pdf"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> அமைப்பு சட்டம் PDF பதிவிறக்கம்</a><button class="cb-btn o" id="cbPrint" type="button"><i class="fa-solid fa-print" aria-hidden="true"></i> அச்சிட</button></div>
 <div class="cb-app" id="cb" role="region" aria-label="அமைப்பு சட்டம் மின்னூல்">
 <div class="cb-bar"><button id="cbTocBtn" type="button" aria-expanded="false" aria-controls="cbPanel" aria-label="உள்ளடக்கம்"><i class="fa-solid fa-list" aria-hidden="true"></i><span class="lbl">உள்ளடக்கம்</span></button><div class="cb-ind" id="cbInd" aria-live="polite"></div>
-<button id="cbZo" type="button" aria-label="சிறிதாக்கு"><i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i></button><button id="cbZi" type="button" aria-label="பெரிதாக்கு"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></button><button id="cbBm" type="button" aria-pressed="false" aria-label="புக்மார்க்"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button><button id="cbFs" type="button" aria-label="முழுத்திரை"><i class="fa-solid fa-expand" aria-hidden="true"></i></button></div>
+<button id="cbZo" type="button" aria-label="சிறிதாக்கு"><i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i></button><button id="cbZr" class="cb-zr" type="button" aria-label="அளவை மீட்டமை">100%</button><button id="cbZi" type="button" aria-label="பெரிதாக்கு"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></button><button id="cbBm" type="button" aria-pressed="false" aria-label="புக்மார்க்"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button><button id="cbFs" type="button" aria-label="முழுத்திரை"><i class="fa-solid fa-expand" aria-hidden="true"></i></button><button id="cbClose" class="cb-close" type="button" aria-label="முழுத்திரையை மூடு"><i class="fa-solid fa-xmark" aria-hidden="true"></i><span>மூடு</span></button></div>
 <div class="cb-prog" aria-hidden="true"><i id="cbProg"></i></div>
 <div class="cb-main"><aside class="cb-panel" id="cbPanel" hidden aria-label="உள்ளடக்கம்"><h2>உள்ளடக்கம்</h2><div id="cbList"></div><h2>புக்மார்க்குகள்</h2><div id="cbBms"></div><label for="cbGo">பக்க எண்ணுக்குச் செல்</label><input id="cbGo" type="number" min="1" max="33" inputmode="numeric"></aside>
 <div class="cb-view" id="cbView"><div class="book closed" id="cbBook"><div class="slot l" hidden></div><div class="slot r"></div></div></div><button class="cb-open" id="cbOpen" type="button">புத்தகத்தைத் திற</button></div>

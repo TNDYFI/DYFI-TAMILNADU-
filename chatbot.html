@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500;700;800&family=Noto+Sans+Tamil:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <link rel="stylesheet" href="./assets/css/dyfi.css">
+<link rel="stylesheet" href="./assets/css/skeu.css">
 </head>
 <body class="chat-page">
 <main class="chat-shell" id="chatShell">
@@ -20,7 +21,9 @@
     <button class="chat-close" id="chatClose" type="button" aria-label="Close chatbot" title="Close">×</button>
   </header>
   <div class="chat-welcome" role="status"><strong>வணக்கம்!</strong> DYFI தமிழ்நாடு தொடர்பான உங்கள் கேள்விகளை இங்கே கேட்கலாம்.</div>
-  <section class="chat-live" aria-label="Dialogflow chatbot">
+  <section class="faq" id="faqView" aria-label="அடிக்கடி கேட்கப்படும் கேள்விகள்"><div class="faq-grid"><button class="faq-q" type="button" data-q="DYFI என்றால் என்ன?"><b>1</b><span>DYFI என்றால் என்ன?</span></button><button class="faq-q" type="button" data-q="DYFI அமைப்பு சட்டம் என்ன?"><b>2</b><span>DYFI அமைப்பு சட்டம் என்ன?</span></button><button class="faq-q" type="button" data-q="DYFI-யில் உறுப்பினராக சேர்வது எப்படி?"><b>3</b><span>DYFI-யில் உறுப்பினராக சேர்வது எப்படி?</span></button><button class="faq-q" type="button" data-q="DYFI-யின் முக்கிய நோக்கங்கள் என்ன?"><b>4</b><span>DYFI-யின் முக்கிய நோக்கங்கள் என்ன?</span></button><button class="faq-q" type="button" data-q="தமிழ்நாடு மாநிலக்குழு தொடர்பு விவரங்கள் என்ன?"><b>5</b><span>தமிழ்நாடு மாநிலக்குழு தொடர்பு விவரங்கள் என்ன?</span></button><button class="faq-q" type="button" data-q="மாவட்டக்குழுவை தொடர்பு கொள்வது எப்படி?"><b>6</b><span>மாவட்டக்குழுவை தொடர்பு கொள்வது எப்படி?</span></button><button class="faq-q" type="button" data-q="DYFI நடத்தும் நிகழ்வுகள் மற்றும் போராட்டங்களை எங்கு பார்க்கலாம்?"><b>7</b><span>DYFI நடத்தும் நிகழ்வுகள் மற்றும் போராட்டங்களை எங்கு பார்க்கலாம்?</span></button><button class="faq-q" type="button" data-q="DYFI-யின் வரலாறு என்ன?"><b>8</b><span>DYFI-யின் வரலாறு என்ன?</span></button><button class="faq-q" type="button" data-q="DYFI சமூக வலைத்தளங்களை எவ்வாறு தொடர்பு கொள்வது?"><b>9</b><span>DYFI சமூக வலைத்தளங்களை எவ்வாறு தொடர்பு கொள்வது?</span></button><button class="faq-q" type="button" data-q="DYFI அமைப்பு கட்டமைப்பு எப்படி உள்ளது?"><b>10</b><span>DYFI அமைப்பு கட்டமைப்பு எப்படி உள்ளது?</span></button></div></section>
+  <div class="chat-bar" id="chatBar" hidden><button class="faq-back" id="faqBack" type="button"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> கேள்விகளுக்குத் திரும்பு</button></div>
+  <section class="chat-live" id="chatLive" aria-label="Dialogflow chatbot" hidden>
     <df-messenger intent="" chat-title="DYFI - தமிழ் மாநிலக் குழு" agent-id="0ede04bf-57f2-49da-96bf-6050a3bbcbee" language-code="en" chat-icon="./assets/images/white.png" expand></df-messenger>
   </section>
   <footer class="chat-footer">DYFI Tamil Nadu State Committee</footer>
@@ -35,6 +38,12 @@
     else{location.replace("./index.html");}
   }
   close.addEventListener("click",closeChat);
+  var df=document.querySelector("df-messenger"),ready=false,faq=document.getElementById("faqView"),live=document.getElementById("chatLive"),bar=document.getElementById("chatBar");
+  window.addEventListener("df-messenger-loaded",function(){ready=true;});
+  function show(chat){faq.hidden=chat;live.hidden=!chat;bar.hidden=!chat;}
+  function send(q){var go=function(){try{df.sendQuery(q);}catch(e){}};if(ready){setTimeout(go,200);}else{var done=false,f=function(){if(done)return;done=true;setTimeout(go,500);};window.addEventListener("df-messenger-loaded",f,{once:true});setTimeout(f,6000);}}
+  faq.addEventListener("click",function(e){var b=e.target.closest("[data-q]");if(!b)return;show(true);send(b.getAttribute("data-q"));});
+  document.getElementById("faqBack").addEventListener("click",function(){show(false);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeChat();});
   // Preserve same-WebView navigation: this page never opens an external window.
   window.open=function(url){try{var u=new URL(url,location.href);if(u.origin===location.origin||u.protocol==="file:"){location.href=u.href;}}catch(e){}return null;};

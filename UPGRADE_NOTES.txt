@@ -16,3 +16,11 @@ PART 1 - அமைப்பு சட்டம் (Constitution) digital book
 Replaced: terms/privacy.html removed; every Privacy policy link now points to constitution.html (அமைப்பு சட்டம்); sidebar entry added.
 New: constitution.html, assets/css/constitution.css, assets/js/constitution.js, assets/constitution/p01-p33.webp, assets/docs/DYFI-Constitution.pdf
 The book shows the 33 scanned pages of the official PDF unchanged (no retyping). Search is not included: the scan has no text layer.
+
+PART 2 - Leaders (team.html): state President/Secretary/Treasurer cards (existing photos kept, names per official list, treasurer phone), 41 district cards with search by district/president/secretary, live counters. Data: assets/js/leaders.js (blank = placeholder text).
+
+PART 3 - Skeuomorphic + neumorphic skin: assets/css/neo.css (loaded last on every page except chatbot.html) and assets/js/neo.js (floating mobile nav). Content, IDs, classes and scripts unchanged.
+
+PART 3 (revised) - Full skeuomorphic skin: assets/css/skeu.css replaces neo.css/neo.js. No bottom or floating navigation; existing sidebar and top bar restyled. Chatbot page styled too.
+
+PART 4 - Red+black skeuomorphic theme (stripes/side lines removed); constitution zoom contained in viewer + full-screen close; team page: 11 state cards + 41 expandable district cards driven by assets/js/leaders-data.js; chatbot FAQ buttons call df-messenger.sendQuery.
