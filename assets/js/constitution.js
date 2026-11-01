@@ -74,7 +74,10 @@
   var toPage = function (p) { p = Math.max(1, Math.min(N, +p || 1)); if (spreadOf(p) === s) return; busy = false; var to = spreadOf(p); s = to; render(); };
   prev.onclick = function () { go(s - 1); }; next.onclick = function () { go(s + 1); }; sr.onclick = function () { if (s === 0) go(1); }; openB.onclick = function () { go(1); };
   prevC.onclick = function () { toPage(chPrev()); }; nextC.onclick = function () { toPage(chNext()); };
-  $("#cbZi").onclick = function () { z = Math.min(3, z + .25); fit(); }; $("#cbZo").onclick = function () { z = Math.max(.75, z - .25); fit(); };
+  var zr = $("#cbZr");
+  function setZ(v) { var rx = (view.scrollLeft + view.clientWidth / 2) / (view.scrollWidth || 1), ry = (view.scrollTop + view.clientHeight / 2) / (view.scrollHeight || 1); z = Math.max(.75, Math.min(3, Math.round(v * 100) / 100)); fit(); zr.textContent = Math.round(z * 100) + "%"; view.scrollLeft = rx * view.scrollWidth - view.clientWidth / 2; view.scrollTop = ry * view.scrollHeight - view.clientHeight / 2; }
+  $("#cbZi").onclick = function () { setZ(z + .25); }; $("#cbZo").onclick = function () { setZ(z - .25); }; zr.onclick = function () { setZ(1); };
+  view.addEventListener("wheel", function (e) { if (e.ctrlKey) { e.preventDefault(); setZ(z + (e.deltaY < 0 ? .1 : -.1)); } }, { passive: false });
   bm.onclick = function () { var b = bms(), i = b.indexOf(cp); if (i > -1) b.splice(i, 1); else b.push(cp); try { localStorage.setItem("dyfi-cb-bm", JSON.stringify(b)); } catch (e) {} ui(); };
   $("#cbTocBtn").onclick = function () { panel.hidden = !panel.hidden; this.setAttribute("aria-expanded", !panel.hidden); fit(); ui(); };
   panel.addEventListener("click", function (e) { var b = e.target.closest("[data-p]"); if (!b) return; toPage(b.dataset.p); if (innerWidth < 900) { panel.hidden = true; $("#cbTocBtn").setAttribute("aria-expanded", "false"); fit(); } });
@@ -84,16 +87,17 @@
     if (on && app.requestFullscreen) app.requestFullscreen().catch(function () {}); else if (!on && d.fullscreenElement) d.exitFullscreen().catch(function () {});
     setTimeout(render, 80);
   }
-  $("#cbFs").onclick = fs;
+  $("#cbFs").onclick = fs; $("#cbClose").onclick = fs;
   d.addEventListener("fullscreenchange", function () { if (!d.fullscreenElement && app.classList.contains("full")) { app.classList.remove("full"); d.documentElement.style.overflow = ""; render(); } });
   d.addEventListener("keydown", function (e) {
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
     if (e.key === "ArrowRight") go(s + 1); else if (e.key === "ArrowLeft") go(s - 1);
     else if (e.key === "Escape" && app.classList.contains("full") && !d.fullscreenElement) fs();
   });
-  var tx = 0, ty = 0;
-  view.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
-  view.addEventListener("touchend", function (e) { if (z > 1) return; var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(s + (dx < 0 ? 1 : -1)); }, { passive: true });
+  var tx = 0, ty = 0, pd = 0, pz = 1, pinched = false, dist = function (e) { return Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); };
+  view.addEventListener("touchstart", function (e) { if (e.touches.length === 2) { pd = dist(e); pz = z; pinched = true; } else { tx = e.touches[0].clientX; ty = e.touches[0].clientY; pinched = false; } }, { passive: true });
+  view.addEventListener("touchmove", function (e) { if (e.touches.length === 2 && pd) { e.preventDefault(); setZ(pz * dist(e) / pd); } }, { passive: false });
+  view.addEventListener("touchend", function (e) { if (e.touches.length < 2) pd = 0; if (pinched || z > 1) return; var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(s + (dx < 0 ? 1 : -1)); }, { passive: true });
   $("#cbPrint").onclick = function () {
     var box = d.createElement("div"), jobs = []; box.id = "cbPrintAll";
     for (var p = 1; p <= N; p++) { var i = new Image(); i.alt = ""; i.src = src(p); box.appendChild(i); jobs.push(i.decode ? i.decode().catch(function () {}) : 0); }
