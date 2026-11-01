@@ -43,3 +43,24 @@
 [data-theme=dark] .map-f{filter:grayscale(.3) invert(.9) hue-rotate(180deg)}
 [data-theme=dark] .fstatus.ok{background:#12301c;color:#b7f0c8}[data-theme=dark] .fstatus.bad{background:#341414;color:#ffc9c9}
 .dist-row[hidden],.dnone[hidden]{display:none}
+/* leaders: district committees */
+.lhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}
+.lhead h2{margin:0;font-size:clamp(1.5rem,3.4vw,2.2rem)}
+.lstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 20px}
+.lstats div{background:var(--ink);color:#fff;border-left:5px solid var(--red);padding:14px 16px}
+.lstats b{display:block;font-size:1.9rem;line-height:1.1;color:#fff}.lstats span{font-size:.88rem;color:#ddd}
+.lsearch{width:100%;min-height:50px;border:2px solid #d5d5d5;padding:10px 14px;font:inherit;background:#fff;color:inherit;margin-bottom:8px}
+.lsearch:focus{border-color:var(--red);outline:0;box-shadow:0 0 0 .2rem rgba(213,0,0,.15)}
+.lcount{margin:0 0 18px;color:var(--mut);font-size:.9rem}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px}
+.dcard{position:relative;background:#fff;border:1px solid #e3e3e3;border-top:4px solid var(--red);padding:18px 18px 14px;min-width:0}
+.dcard[hidden]{display:none}
+.dcard .dno{position:absolute;top:10px;right:14px;font:700 .85rem var(--ff);color:var(--red)}
+.dcard h3{font-size:1.15rem;margin:0 36px 12px 0}
+.dcard dl{margin:0}.dcard dl div{padding:8px 0;border-top:1px solid #eee}
+.dcard dt{font-size:.78rem;font-weight:600;color:var(--mut);margin:0}.dcard dd{margin:2px 0 0;font-weight:600;overflow-wrap:anywhere}
+.dcard dd.pend{font-weight:400;font-style:italic;color:var(--mut)}
+.stel{margin:12px 0 0;font-weight:600}.stel a{color:var(--red)}
+[data-theme=dark] :is(.dcard,.lsearch){background:#1d1d1d;border-color:#2e2e2e;color:#eaeaea}
+[data-theme=dark] .dcard{border-top-color:var(--red)}[data-theme=dark] .dcard dl div{border-color:#2e2e2e}
+[data-theme=dark] .stel a{color:#ff7a7a}
