@@ -24,3 +24,5 @@ PART 3 - Skeuomorphic + neumorphic skin: assets/css/neo.css (loaded last on ever
 PART 3 (revised) - Full skeuomorphic skin: assets/css/skeu.css replaces neo.css/neo.js. No bottom or floating navigation; existing sidebar and top bar restyled. Chatbot page styled too.
 
 PART 4 - Red+black skeuomorphic theme (stripes/side lines removed); constitution zoom contained in viewer + full-screen close; team page: 11 state cards + 41 expandable district cards driven by assets/js/leaders-data.js; chatbot FAQ buttons call df-messenger.sendQuery.
+
+PART 6 - Reference-based redesign: assets/css/ui.css, assets/js/ui.js (collapsible desktop sidebar, mobile slide-in, page search), gallery.html + gallery.js (edit window.DYFI_GALLERY in gallery.html to add images). skeu.css removed.
