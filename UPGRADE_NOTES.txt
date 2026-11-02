@@ -26,3 +26,5 @@ PART 3 (revised) - Full skeuomorphic skin: assets/css/skeu.css replaces neo.css/
 PART 4 - Red+black skeuomorphic theme (stripes/side lines removed); constitution zoom contained in viewer + full-screen close; team page: 11 state cards + 41 expandable district cards driven by assets/js/leaders-data.js; chatbot FAQ buttons call df-messenger.sendQuery.
 
 PART 6 - Reference-based redesign: assets/css/ui.css, assets/js/ui.js (collapsible desktop sidebar, mobile slide-in, page search), gallery.html + gallery.js (edit window.DYFI_GALLERY in gallery.html to add images). skeu.css removed.
+
+PART 7 - Home: 6-image gallery preview + 3 YouTube cards (assets/js/videos-data.js), full-screen hero (Home only). Gallery: 100 slots (assets/js/gallery-data.js), See More dialogs, lightbox. Team: set.png avatars, WhatsApp for valid numbers, placeholder 1234567890 without links, executive section (leaders-data.js stateExecutive).
