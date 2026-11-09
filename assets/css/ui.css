@@ -137,3 +137,28 @@ body#home :is(.dm,.wg,.ic):hover{box-shadow:none;background:none}
 .yt-play{position:absolute;inset:0;display:grid;place-items:center}.yt-play::before{content:"";width:66px;height:46px;border-radius:14px;background:#f00;opacity:.92;transition:transform .2s}.yt-play::after{content:"";position:absolute;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff;margin-left:4px}
 .yt-card:hover .yt-play::before{transform:scale(1.08)}.yt-card:focus-visible{outline:3px solid var(--primary);outline-offset:4px;border-radius:16px}
 .yt-b{padding:10px 2px 0}.yt-b h3{font-size:1.05rem;margin:0}.yt-b p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
+
+/* leadership v2: horizontal profile rows */
+.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-bottom:34px}
+.pp{display:flex;align-items:center;gap:14px;min-width:0}
+.pp-av{display:block;flex:none;width:52px;height:52px;position:relative;border-radius:50%;overflow:hidden;background:var(--bg);box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--border)}.pp-av.big{width:68px;height:68px}
+.pp-av img{filter:none;position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block}
+.pp-b{min-width:0;flex:1}.pp-n{font-weight:700;overflow-wrap:anywhere;line-height:1.4}.pp-n.pend{font-weight:400;font-style:italic;color:var(--muted)}.pp-r{font-size:.82rem;color:var(--muted);margin-top:1px}
+.pp-c{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px}.pp-t{font-weight:600;color:var(--text);text-decoration:none;font-variant-numeric:tabular-nums;margin-right:2px}
+.pp-a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-size:1rem;color:var(--primary);background:var(--tint);transition:transform .15s,background .2s}.pp-a:hover{background:var(--primary);color:#fff}.pp-a:active{transform:scale(.92)}.pp-a.wa{background:#25d366;color:#fff}.pp-a.wa:hover{background:#128c7e}
+.pc{background:var(--glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:16px}
+.pc .pp-n{font-size:1.1rem}.pc .pp-r{display:inline-block;margin-top:4px;padding:3px 10px;border-radius:999px;background:var(--tint);color:#9b0000;font-weight:700}:root[data-theme=dark] .pc .pp-r{color:#ff8a8a}
+.dgrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:16px;align-items:start}
+.dcx{background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;min-width:0}.dcx[hidden]{display:none}
+.dcx h3{margin:0;padding:12px 16px;color:#fff;background:var(--grad);font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:10px}.dcx h3 small{opacity:.85;font-size:.8rem}
+.dcx .pp{padding:12px 16px}.dcx .pp+.pp{border-top:1px solid var(--border)}
+/* motion */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtOut .2s ease both}::view-transition-new(root){animation:vtIn .35s ease both}
+@keyframes vtOut{to{opacity:0;transform:translateY(-6px)}}@keyframes vtIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes uIn{from{opacity:0;transform:translateY(10px)}}
+.rv{transition:opacity .5s ease,transform .5s ease;transition-delay:var(--d,0ms)}.js-rv .rv:not(.in){opacity:0;transform:translateY(16px)}
+.chat-live:not([hidden]),.faq:not([hidden]){animation:chIn .35s ease}@keyframes chIn{from{opacity:0;transform:translateY(14px)}}
+.chat-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.chat-bar[hidden]{display:none}.chat-ctx{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.9rem;font-weight:600;color:var(--text)}
+.chat-st{margin:8px 16px 0;padding:8px 12px;border-radius:12px;background:var(--tint);color:var(--text);font-size:.88rem}.chat-st[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}.rv{transition:none}.js-rv .rv:not(.in){opacity:1;transform:none}.chat-live:not([hidden]),.faq:not([hidden]){animation:none}}
