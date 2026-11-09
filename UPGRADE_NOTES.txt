@@ -28,3 +28,5 @@ PART 4 - Red+black skeuomorphic theme (stripes/side lines removed); constitution
 PART 6 - Reference-based redesign: assets/css/ui.css, assets/js/ui.js (collapsible desktop sidebar, mobile slide-in, page search), gallery.html + gallery.js (edit window.DYFI_GALLERY in gallery.html to add images). skeu.css removed.
 
 PART 7 - Home: 6-image gallery preview + 3 YouTube cards (assets/js/videos-data.js), full-screen hero (Home only). Gallery: 100 slots (assets/js/gallery-data.js), See More dialogs, lightbox. Team: set.png avatars, WhatsApp for valid numbers, placeholder 1234567890 without links, executive section (leaders-data.js stateExecutive).
+
+PART 8 - Team page rebuilt (4 state leaders, executive, 41 districts as profile rows with call + WhatsApp), data in assets/js/leaders-data.js (stateLeadership, stateExecutive, districts), default photo assets/images/profile.png; page transitions + staggered reveals; chatbot FAQ opens the conversation with status line.
